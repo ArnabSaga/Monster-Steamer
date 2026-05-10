@@ -1,14 +1,30 @@
 import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { MdArrowOutward, MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
+import { revealOnScroll } from "../utils/gsapUtils";
+
 import CarpetCleaningService from "../assets/Quality-Service/CarpetCleaningService.jpg";
 import AirDuctCleaning from "../assets/Quality-Service/AirDuct.jpg";
 import UpholsteryCleaningService from "../assets/Quality-Service/UpholsteryCleaningService.jpg";
 import TileGroutCleaningService from "../assets/Quality-Service/TileGroutCleaningService.jpg";
 import PetOdorRemoval from "../assets/Quality-Service/PetOdorRemoval.jpg";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Services = () => {
     const [index, setIndex] = useState(0);
+    const containerRef = useRef(null);
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    });
+
+    const rotateX_scroll = useTransform(scrollYProgress, [0, 1], [10, -10]);
+    const springRotateX = useSpring(rotateX_scroll, { stiffness: 100, damping: 30 });
+
     const images = [
         { src: CarpetCleaningService, title: "Carpet Cleaning", description: "Say Goodbye To Stains & Odors" },
         { src: UpholsteryCleaningService, title: "Upholstery Cleaning", description: "Like New When We Finish" },
@@ -17,72 +33,133 @@ const Services = () => {
         { src: AirDuctCleaning, title: "Air Duct Cleaning", description: "Breathe Clean Air You Deserve" }
     ];
 
-    const carouselRef = useRef();
-
     useEffect(() => {
-        gsap.fromTo(
-            carouselRef.current.children[index],
-            { scale: 1 },
-            { scale: 1.1, duration: 0.8, ease: "power1.inOut" }
-        );
-    }, [index]);
+        const ctx = gsap.context(() => {
+            revealOnScroll(".gsap-reveal", containerRef.current, {
+                stagger: 0.1
+            });
+        }, containerRef);
+        return () => ctx.revert();
+    }, []);
 
     const nextImage = () => {
-        gsap.to(carouselRef.current.children[index], { scale: 1, duration: 0.5, ease: "power1.inOut" });
         setIndex((prev) => (prev + 1) % images.length);
     };
 
     const prevImage = () => {
-        gsap.to(carouselRef.current.children[index], { scale: 1, duration: 0.5, ease: "power1.inOut" });
         setIndex((prev) => (prev - 1 + images.length) % images.length);
     };
 
     return (
-        <div className='w-full h-screen bg-[#153339]'>
-            <div className='pt-10 md:pt-32 pb-10 md:pb-12 px-10 md:px-40 flex flex-col md:flex-row gap-16 md:gap-64 justify-between'>
-                <div className='text-5xl md:text-7xl font-bold text-white uppercase'>
-                    <h1>Quality</h1>
-                    <h1>Services</h1>
+        <section ref={containerRef} className='w-full bg-[#153339] section-padding text-white overflow-hidden'>
+            <div className='flex flex-col md:flex-row gap-12 justify-between items-end mb-24 relative z-10'>
+                <div className='text-7xl md:text-9xl font-black uppercase leading-[0.8] tracking-tighter'>
+                    <h2 className="gsap-reveal overflow-hidden">
+                        <span className="block">Quality</span>
+                    </h2>
+                    <h2 className="gsap-reveal text-[#00CCF8] overflow-hidden">
+                        <span className="block">Services</span>
+                    </h2>
                 </div>
-                <div>
-                    <p className='text-sm md:-mt-0 md:text-lg text-[#788588]'>Monster Steamer is the most trusted and professional cleaning service provider in the San Diego area.</p>
-                    <div className=' md:mt-5 flex flex-col md:flex-row items-start md:items-center  gap-4 md:gap-16 '>
-                        <button className='flex gap-1 text-[#00CCF8] hover:text-[#b5f4ff] hover:duration-500 duration-500 text-sm'>See Our Pricing <MdArrowOutward className="text-zinc-400" /> </button>
-                        <button className='flex gap-1 text-[#00CCF8] hover:text-[#b5f4ff] hover:duration-500 duration-500 text-sm'>Call Us (619) 201-9480 <MdArrowOutward className="text-zinc-400" /> </button>
+                <div className="max-w-md">
+                    <p className='text-slate-400 text-xl mb-10 gsap-reveal'>Monster Steamer is the most trusted and professional cleaning service provider in the San Diego area.</p>
+                    <div className='flex flex-wrap gap-8 gsap-reveal'>
+                        <motion.button 
+                            whileHover={{ scale: 1.05, x: 5 }}
+                            className='flex items-center gap-3 text-[#00CCF8] text-lg font-bold hover:text-white transition-all group'
+                        >
+                            See Our Pricing <MdArrowOutward className="text-2xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                        </motion.button>
+                        <motion.button 
+                            whileHover={{ scale: 1.05, x: 5 }}
+                            className='flex items-center gap-3 text-[#00CCF8] text-lg font-bold hover:text-white transition-all group'
+                        >
+                            Call Us (619) 201-9480 <MdArrowOutward className="text-2xl transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                        </motion.button>
                     </div>
                 </div>
             </div>
-            <div className="flex items-center justify-center">
-                <div className="flex gap-3 py-12 px-6 bg-[#002932] rounded-xl w-80 md:w-3/4 h-3/4 md:h-1/2">
-                    <div className="mt-36 md:mt-44">
-                        <div className="flex gap-2">
-                            <button className="border-2 border-zinc-300 rounded-lg" onClick={prevImage}>
-                                <MdKeyboardArrowLeft className="text-zinc-400  hover:bg-zinc-300 hover:text-black hover:duration-500 duration-500 text-3xl" />
-                            </button>
-                            <button className=" border-2 border-zinc-300 rounded-lg" onClick={nextImage}>
-                                <MdKeyboardArrowRight className="text-zinc-400  hover:bg-zinc-300 hover:text-black hover:duration-500 duration-500 text-3xl" />
-                            </button>
+
+            <motion.div
+                style={{ rotateX: springRotateX }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 1, ease: "easeOut" }}
+                viewport={{ once: false }}
+                className="relative bg-[#002932] rounded-[4rem] p-10 md:p-20 overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.5)] border border-white/5 perspective-2000"
+            >
+                {/* Background Glow */}
+                <div className="absolute top-0 left-1/4 w-1/2 h-1/2 bg-[#00CCF8]/10 blur-[120px] rounded-full -z-10" />
+
+                <div className="flex flex-col md:flex-row items-center gap-16 relative z-10">
+                    <div className="w-full md:w-1/3 flex flex-col gap-6">
+                         <div className="text-sm font-black uppercase tracking-[0.4em] text-[#00CCF8]/40">Expertise</div>
+                         <AnimatePresence mode="wait">
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, x: -30 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 30 }}
+                                transition={{ duration: 0.5, ease: "anticipate" }}
+                            >
+                                <h3 className="text-6xl font-black mb-6 tracking-tight">{images[index].title}</h3>
+                                <p className="text-2xl text-slate-400 mb-12 font-medium leading-relaxed">{images[index].description}</p>
+                            </motion.div>
+                         </AnimatePresence>
+ 
+                         <div className="flex gap-6">
+                            <motion.button
+                                whileHover={{ scale: 1.1, backgroundColor: "#00CCF8", color: "#fff", borderColor: "#00CCF8" }}
+                                whileTap={{ scale: 0.9 }}
+                                className="w-20 h-20 rounded-full border-2 border-slate-700 flex items-center justify-center transition-colors duration-300"
+                                onClick={prevImage}
+                            >
+                                <MdKeyboardArrowLeft className="text-5xl" />
+                            </motion.button>
+                            <motion.button
+                                whileHover={{ scale: 1.1, backgroundColor: "#00CCF8", color: "#fff", borderColor: "#00CCF8" }}
+                                whileTap={{ scale: 0.9 }}
+                                className="w-20 h-20 rounded-full border-2 border-slate-700 flex items-center justify-center transition-colors duration-300"
+                                onClick={nextImage}
+                            >
+                                <MdKeyboardArrowRight className="text-5xl" />
+                            </motion.button>
                         </div>
                     </div>
-                    <div className="flex items-center gap-5 p-4 overflow-hidden w-full pb-5" ref={carouselRef}>
-                        {images.map((img, i) => (
-                            <div
-                                key={i}
-                                className={`transition-transform duration-700 ${i === index ? "transform scale-120" : ""}`}
-                                style={{ display: i >= index && i < index + 4 ? "block" : "none" }}
+ 
+                    <div className="flex-1 w-full relative h-[500px] md:h-[700px] group">
+                        <AnimatePresence mode="wait">
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, scale: 0.9, rotateY: -15, z: -100 }}
+                                animate={{ opacity: 1, scale: 1, rotateY: 0, z: 0 }}
+                                exit={{ opacity: 0, scale: 1.1, rotateY: 15, z: 100 }}
+                                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                                className="absolute inset-0 rounded-[3.5rem] overflow-hidden shadow-2xl border border-white/10"
                             >
-                                <div className="flex flex-col items-center">
-                                    <img className="w-42 h-28 md:w-48 md:h-36 rounded-lg" src={img.src} alt={img.title} />
-                                    <h1 className="text-md md:text-base whitespace-nowrap font-semibold text-[#E2EFF2] mt-2">{img.title}</h1>
-                                    <p className="text-xs md:text-sm text-[#788588] whitespace-nowrap">{img.description}</p>
+                                <img
+                                    className="w-full h-full object-cover transition-transform duration-[2.5s] group-hover:scale-110"
+                                    src={images[index].src}
+                                    alt={images[index].title}
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent flex items-end p-16">
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3 }}
+                                    >
+                                        <div className="text-4xl md:text-5xl font-black tracking-tighter uppercase text-[#00CCF8]">{images[index].title}</div>
+                                        <div className="w-20 h-1 bg-[#00CCF8] mt-4 rounded-full" />
+                                    </motion.div>
                                 </div>
-                            </div>
-                        ))}
+                            </motion.div>
+                        </AnimatePresence>
                     </div>
                 </div>
-            </div>
-        </div>
+            </motion.div>
+        </section>
     );
 }
 
 export default Services;
+

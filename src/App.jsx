@@ -3,11 +3,12 @@ import { Home } from "./pages/index";
 
 const App = () => {
     return (
-        <div className="w-full h-screen">
+        <div className="w-full min-h-screen">
             <Routes>
                 <Route path="/" element={<Home />} />
             </Routes>
         </div>
+
     )
 }
 

@@ -8,6 +8,7 @@ import FeedBack from "./FeedBack";
 import AfterBefore from "./AfterBefore";
 import Off from "./Off";
 import Footer from "./Footer";
+import SmoothScroll from "./SmoothScroll";
 
 
 export {
@@ -21,4 +22,5 @@ export {
     AfterBefore,
     Off,
     Footer,
-}
+    SmoothScroll,
+}

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AfterBefore, Feature, FeedBack, Footer, Hero, Navbar, Off, Serivces, Video, Why } from '../components';
+import { AfterBefore, Feature, FeedBack, Footer, Hero, Navbar, Off, Serivces, SmoothScroll, Video, Why } from '../components';
 import { gsap } from "gsap";
 
 const Home = () => {
@@ -38,19 +38,23 @@ const Home = () => {
     };
 
     return (
-        <div>
-            <Navbar />
-            <Hero triggerAnimation={triggerAnimation} />
-            <Feature animateVideoBg={animateVideoBg} />
-            <Serivces />
-            <Why />
-            <Video />
-            <FeedBack />
-            <AfterBefore />
-            <Off />
-            <Footer />
-        </div>
+        <SmoothScroll>
+            <div className="relative w-full">
+                <Navbar />
+                <Hero triggerAnimation={triggerAnimation} />
+                <Feature animateVideoBg={animateVideoBg} />
+                <Serivces />
+                <Why />
+                <Video />
+                <FeedBack />
+                <AfterBefore />
+                <Off />
+                <Footer />
+            </div>
+        </SmoothScroll>
+
     );
 };
+
 
 export default Home;

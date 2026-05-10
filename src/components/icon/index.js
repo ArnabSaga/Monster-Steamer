@@ -1,25 +1,25 @@
 import CallIcon from "./CallIcon";
 import CallUsToday from "./CallUsToday";
-import RightArrow from "./RightArrow";
-import UpperTopArrow from "./UpperTopArrow";
-import Star from "./Star";
 import Google from "./Google";
+import RightArrow from "./RightArrow";
 import SingleStar from "./SingleStar";
+import Star from "./Star";
+import UpperTopArrow from "./UpperTopArrow";
 import YelpLogo from "./YelpLogo";
-// import PinDrop from "./PinDrop";
-import MailIcon from "./MailIcon";
+import PinDrop from "./PinDrop";
 import LocationIcon from "./LocationIcon";
+import MailIcon from "./MailIcon";
 
 export {
-    CallIcon,
-    CallUsToday,
-    RightArrow,
-    UpperTopArrow,
-    Star,
-    Google,
-    SingleStar,
-    YelpLogo,
-    // PinDrop,
-    MailIcon,
-    LocationIcon,
-}
+  CallIcon,
+  CallUsToday,
+  Google,
+  LocationIcon,
+  PinDrop,
+  MailIcon,
+  RightArrow,
+  SingleStar,
+  Star,
+  UpperTopArrow,
+  YelpLogo,
+};
