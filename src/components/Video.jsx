@@ -80,7 +80,6 @@ const Video = () => {
               className="absolute inset-0 w-full h-full object-cover"
               src={videoSource}
               autoPlay
-              controls
               loop
               muted
               playsInline
