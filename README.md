@@ -9,7 +9,7 @@
 [![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white)](https://greensock.com/gsap/)
 [![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)](https://www.framer.com/motion/)
 
-[**Live Demo**](https://arnabsaga.github.io/Monster-Steamer/) • [**Report Bug**](https://github.com/ArnabSaga/Monster-Steamer/issues) • [**Request Feature**](https://github.com/ArnabSaga/Monster-Steamer/issues)
+[**Live Demo**](https://monster-steamer-inky.vercel.app/)
 
 </div>
 
