@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useRef, useState } from "react";
 import { FaPlay } from "react-icons/fa";
 import { revealOnScroll } from "../utils/gsapUtils";
+import videoSource from "../assets/monster-carpet-high.mp4";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,14 +76,15 @@ const Video = () => {
               </motion.p>
             </div>
           ) : (
-            <iframe
-              className="absolute inset-0 w-full h-full"
-              src="../assets/monster-carpet-high.mp4"
-              title="Monster Steamer Process"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+            <video
+              className="absolute inset-0 w-full h-full object-cover"
+              src={videoSource}
+              autoPlay
+              controls
+              loop
+              muted
+              playsInline
+            ></video>
           )}
 
           {/* Decorative Elements */}
