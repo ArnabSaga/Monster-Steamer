@@ -27,6 +27,17 @@ const Navbar = () => {
     setActiveDropdown(null);
   }, [location]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   const navLinks = [
     { name: "Home", href: "/" },
     {
@@ -190,10 +201,21 @@ const Navbar = () => {
             className="fixed inset-0 z-[100] bg-[#001D24] lg:hidden overflow-hidden"
           >
             {/* Abstract Background Shapes */}
-            <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#00CCF8]/10 rounded-full blur-[120px]" />
-            <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#00CCF8]/5 rounded-full blur-[100px]" />
+            <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#00CCF8]/10 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#00CCF8]/5 rounded-full blur-[100px] pointer-events-none" />
 
-            <div className="flex flex-col h-full p-8 pt-32">
+            <div className="relative z-10 flex flex-col h-full p-8">
+              {/* Overlay Header */}
+              <div className="flex justify-between items-center pt-4 mb-12">
+                <img src={logo} alt="Monster Steamer" className="h-10 filter brightness-0 invert opacity-80" />
+                <button 
+                  onClick={() => setIsOpen(false)}
+                  className="w-14 h-14 rounded-2xl bg-[#00CCF8] text-white flex items-center justify-center text-xl shadow-lg shadow-[#00CCF8]/20"
+                >
+                  <FaTimes />
+                </button>
+              </div>
+
               <motion.div
                 variants={containerVariants}
                 initial="hidden"
@@ -205,7 +227,7 @@ const Navbar = () => {
                     <Link
                       to={link.href}
                       onClick={() => setIsOpen(false)}
-                      className="text-6xl font-black text-white uppercase tracking-tighter hover:text-[#00CCF8] transition-all flex items-center gap-6 group"
+                      className="text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase tracking-tighter hover:text-[#00CCF8] transition-all flex items-center gap-4 sm:gap-6 group"
                     >
                       <span className="text-[#00CCF8]/20 group-hover:text-[#00CCF8] transition-colors">
                         /
@@ -216,22 +238,22 @@ const Navbar = () => {
                 ))}
               </motion.div>
 
-              <div className="mt-auto pt-10 border-t border-white/10 flex flex-col gap-8">
-                <a href="tel:6192019480" className="flex items-center gap-6">
-                  <div className="w-16 h-16 rounded-3xl bg-[#00CCF8]/10 flex items-center justify-center text-[#00CCF8] border border-[#00CCF8]/20">
-                    <FaPhoneAlt className="text-2xl" />
+              <div className="mt-auto pt-8 border-t border-white/10 flex flex-col gap-6 sm:gap-8">
+                <a href="tel:6192019480" className="flex items-center gap-4 sm:gap-6">
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl sm:rounded-3xl bg-[#00CCF8]/10 flex items-center justify-center text-[#00CCF8] border border-[#00CCF8]/20">
+                    <FaPhoneAlt className="text-xl sm:text-2xl" />
                   </div>
                   <div>
-                    <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-1">
+                    <p className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-1">
                       Get a Quote
                     </p>
-                    <p className="text-3xl font-black text-white tracking-tighter">
+                    <p className="text-2xl sm:text-3xl font-black text-white tracking-tighter">
                       (619) 201-9480
                     </p>
                   </div>
                 </a>
 
-                <button className="w-full bg-[#00CCF8] text-white py-8 rounded-[2.5rem] text-2xl font-black uppercase tracking-widest shadow-[0_20px_50px_rgba(0,204,248,0.4)]">
+                <button className="w-full bg-[#00CCF8] text-white py-6 sm:py-8 rounded-2xl sm:rounded-[2.5rem] text-xl sm:text-2xl font-black uppercase tracking-widest shadow-[0_20px_50px_rgba(0,204,248,0.4)]">
                   Book Online Now
                 </button>
               </div>

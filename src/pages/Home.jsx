@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AfterBefore, Feature, FeedBack, Footer, Hero, Navbar, Off, Serivces, SmoothScroll, Video, Why } from '../components';
+import { AfterBefore, Feature, FeedBack, Footer, Hero, Navbar, Off, Services, SmoothScroll, Video, Why } from '../components';
 import { gsap } from "gsap";
 
 const Home = () => {
@@ -43,7 +43,7 @@ const Home = () => {
                 <Navbar />
                 <Hero triggerAnimation={triggerAnimation} />
                 <Feature animateVideoBg={animateVideoBg} />
-                <Serivces />
+                <Services />
                 <Why />
                 <Video />
                 <FeedBack />

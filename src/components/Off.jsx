@@ -68,12 +68,12 @@ const Off = () => {
                     </motion.span>
                 </div>
                 
-                <h2 className='text-6xl md:text-9xl text-[#153339] font-black leading-[0.8] tracking-tighter uppercase mb-12'>
+                <h2 className='text-4xl sm:text-6xl md:text-9xl text-[#153339] font-black leading-[0.9] md:leading-[0.8] tracking-tighter uppercase mb-8 md:mb-12'>
                     <div className="overflow-hidden">
                         <span className="off-reveal block">Book Online</span>
                     </div>
                     <div className="overflow-hidden">
-                        <span className="off-reveal block text-[#00CCF8] italic decoration-8 underline-offset-[20px]">
+                        <span className="off-reveal block text-[#00CCF8] italic decoration-4 sm:decoration-8 underline-offset-[10px] sm:underline-offset-[20px]">
                             & Get 10% Off.
                         </span>
                     </div>
@@ -84,12 +84,12 @@ const Off = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8, duration: 1 }}
                     viewport={{ once: false }}
-                    className="relative"
+                    className="relative w-full sm:w-auto"
                 >
                     <motion.button 
                         whileHover={{ scale: 1.05, boxShadow: "0 30px 60px rgba(0,204,248,0.4)" }}
                         whileTap={{ scale: 0.95 }}
-                        className='btn-primary px-16 py-8 text-2xl font-black uppercase tracking-widest'
+                        className='btn-primary w-full sm:w-auto px-10 sm:px-16 py-6 sm:py-8 text-xl sm:text-2xl font-black uppercase tracking-widest'
                     >
                         Claim Your Discount
                     </motion.button>

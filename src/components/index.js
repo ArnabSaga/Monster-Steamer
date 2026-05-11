@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 import Feature from "./Feature";
-import Serivces from "./Serivces";
+import Services from "./Services";
 import Why from "./Why";
 import Video from "./Video";
 import FeedBack from "./FeedBack";
@@ -15,7 +15,7 @@ export {
     Navbar,
     Hero,
     Feature,
-    Serivces,
+    Services,
     Why,
     Video,
     FeedBack,

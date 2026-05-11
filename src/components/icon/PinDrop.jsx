@@ -10,4 +10,4 @@ PinDrop.propTypes = {
   className: PropTypes.string,
 };
 
-export { PinDrop };
+export default PinDrop;

@@ -76,7 +76,7 @@ const Why = () => {
                         Why Choose Us
                     </motion.div>
                     
-                    <h2 className='why-reveal text-7xl md:text-9xl font-black uppercase leading-[0.8] tracking-tighter mb-12'>
+                    <h2 className='why-reveal text-5xl md:text-7xl lg:text-9xl font-black uppercase leading-[0.8] tracking-tighter mb-12'>
                         <span className="block">Why</span>
                         <span className="text-gradient">Choose Us?</span>
                     </h2>

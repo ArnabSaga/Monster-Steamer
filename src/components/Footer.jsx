@@ -75,14 +75,14 @@ const Footer = () => {
   };
 
   return (
-    <div className="relative mt-60" ref={footerRef}>
+    <div className="relative mt-32 md:mt-60" ref={footerRef}>
       {/* Area We Serve Section - Modernized 3D Card */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-7xl z-20 px-4">
         <motion.div
           initial={{ opacity: 0, y: 100, rotateX: 20 }}
           whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
           viewport={{ once: false }}
-          className="relative rounded-[3rem] bg-gradient-to-br from-[#00CCF8] to-[#0099BA] p-8 md:p-16 overflow-hidden shadow-[0_30px_100px_rgba(0,204,248,0.4)] perspective-2000"
+          className="relative rounded-[2rem] md:rounded-[3rem] bg-gradient-to-br from-[#00CCF8] to-[#0099BA] p-8 md:p-16 overflow-hidden shadow-[0_30px_100px_rgba(0,204,248,0.4)] perspective-2000"
         >
           <div
             id="sanDiegoImage"
@@ -100,7 +100,7 @@ const Footer = () => {
             >
               Locations
             </motion.span>
-            <h2 className="text-5xl md:text-8xl text-white font-black uppercase tracking-tighter mb-12 leading-[0.9]">
+            <h2 className="text-4xl md:text-6xl lg:text-8xl text-white font-black uppercase tracking-tighter mb-12 leading-[0.9]">
               Areas We <span className="text-white/40">Serve</span>
             </h2>
 
@@ -114,7 +114,7 @@ const Footer = () => {
                     color: "#00CCF8",
                   }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 rounded-2xl bg-white/10 backdrop-blur-md text-white font-black uppercase text-[10px] tracking-widest transition-colors border border-white/20 flex items-center gap-2"
+                  className="px-4 py-2 md:px-6 md:py-3 rounded-xl md:rounded-2xl bg-white/10 backdrop-blur-md text-white font-black uppercase text-[9px] md:text-[10px] tracking-widest transition-colors border border-white/20 flex items-center gap-2"
                   onMouseEnter={() => setHoveredArea(area)}
                   onMouseLeave={() => setHoveredArea(null)}
                 >
@@ -131,7 +131,7 @@ const Footer = () => {
       </div>
 
       {/* Main Footer */}
-      <footer className="w-full bg-[#001D24] pt-64 lg:pt-80 pb-16 px-6 relative overflow-hidden">
+      <footer className="w-full bg-[#001D24] pt-48 md:pt-64 lg:pt-80 pb-12 md:pb-16 px-6 relative overflow-hidden">
         {/* Background Pattern */}
         <div
           className="absolute top-0 left-0 w-full h-full opacity-[0.02] pointer-events-none"
@@ -148,18 +148,18 @@ const Footer = () => {
           viewport={{ once: false }}
           className="max-w-7xl mx-auto relative z-10"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 mb-16 lg:mb-24">
             {/* Brand Column */}
-            <div className="lg:col-span-4">
+            <div className="lg:col-span-4 text-center lg:text-left flex flex-col items-center lg:items-start">
               <motion.img
                 variants={itemVariants}
-                className="w-48 mb-10"
+                className="w-40 md:w-48 mb-8 md:mb-10"
                 src={logoWhite}
                 alt="Monster Steamer Logo"
               />
               <motion.p
                 variants={itemVariants}
-                className="text-slate-400 font-medium leading-relaxed mb-10 text-base lg:text-lg pr-4 lg:pr-8 tracking-wide"
+                className="text-slate-400 font-medium leading-relaxed mb-10 text-sm md:text-base lg:text-lg lg:pr-8 tracking-wide max-w-md lg:max-w-none"
               >
                 San Diego&apos;s most trusted premium cleaning service since 2010. We use
                 state-of-the-art equipment and eco-friendly solutions to ensure your home is safer,
@@ -175,19 +175,19 @@ const Footer = () => {
                     key={i}
                     whileHover={{ y: -5, scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#00CCF8] border border-white/10 hover:border-[#00CCF8]/50 hover:bg-[#00CCF8]/10 transition-all duration-300"
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#00CCF8] border border-white/10 hover:border-[#00CCF8]/50 hover:bg-[#00CCF8]/10 transition-all duration-300"
                   >
-                    <item.icon className="text-xl" />
+                    <item.icon className="text-lg md:text-xl" />
                   </motion.a>
                 ))}
               </motion.div>
             </div>
 
             {/* Links Columns */}
-            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-3 gap-12">
-              <motion.div variants={itemVariants}>
-                <h4 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-8 flex items-center gap-3">
-                  <span className="w-8 h-px bg-[#00CCF8]"></span>
+            <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
+              <motion.div variants={itemVariants} className="text-center sm:text-left">
+                <h4 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-6 md:mb-8 flex items-center justify-center sm:justify-start gap-3">
+                  <span className="hidden sm:block w-8 h-px bg-[#00CCF8]"></span>
                   Explore
                 </h4>
                 <ul className="space-y-4">
@@ -195,9 +195,9 @@ const Footer = () => {
                     <li key={link}>
                       <Link
                         to="#"
-                        className="text-slate-400 hover:text-[#00CCF8] font-bold transition-all flex items-center gap-2 group"
+                        className="text-slate-400 hover:text-[#00CCF8] font-bold transition-all flex items-center justify-center sm:justify-start gap-2 group"
                       >
-                        <FaChevronRight className="text-[10px] opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                        <FaChevronRight className="text-[10px] opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all hidden sm:block" />
                         {link}
                       </Link>
                     </li>
@@ -205,9 +205,9 @@ const Footer = () => {
                 </ul>
               </motion.div>
 
-              <motion.div variants={itemVariants}>
-                <h4 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-8 flex items-center gap-3">
-                  <span className="w-8 h-px bg-[#00CCF8]"></span>
+              <motion.div variants={itemVariants} className="text-center sm:text-left">
+                <h4 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-6 md:mb-8 flex items-center justify-center sm:justify-start gap-3">
+                  <span className="hidden sm:block w-8 h-px bg-[#00CCF8]"></span>
                   Services
                 </h4>
                 <ul className="space-y-4">
@@ -215,9 +215,9 @@ const Footer = () => {
                     <li key={link}>
                       <Link
                         to="#"
-                        className="text-slate-400 hover:text-[#00CCF8] font-bold transition-all flex items-center gap-2 group"
+                        className="text-slate-400 hover:text-[#00CCF8] font-bold transition-all flex items-center justify-center sm:justify-start gap-2 group"
                       >
-                        <FaChevronRight className="text-[10px] opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all" />
+                        <FaChevronRight className="text-[10px] opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all hidden sm:block" />
                         {link}
                       </Link>
                     </li>
@@ -225,50 +225,50 @@ const Footer = () => {
                 </ul>
               </motion.div>
 
-              <motion.div variants={itemVariants}>
-                <h4 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-8 flex items-center gap-3">
-                  <span className="w-8 h-px bg-[#00CCF8]"></span>
+              <motion.div variants={itemVariants} className="text-center sm:text-left">
+                <h4 className="text-white font-black uppercase tracking-[0.2em] text-xs mb-6 md:mb-8 flex items-center justify-center sm:justify-start gap-3">
+                  <span className="hidden sm:block w-8 h-px bg-[#00CCF8]"></span>
                   Contact Us
                 </h4>
                 <div className="space-y-6">
-                  <a href="tel:6192019480" className="flex items-center gap-4 group">
-                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#00CCF8] group-hover:bg-[#00CCF8] group-hover:text-white border border-white/10 group-hover:border-[#00CCF8] transition-all duration-500">
-                      <IoIosCall className="text-xl" />
+                  <a href="tel:6192019480" className="flex items-center justify-center sm:justify-start gap-4 group">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#00CCF8] group-hover:bg-[#00CCF8] group-hover:text-white border border-white/10 group-hover:border-[#00CCF8] transition-all duration-500">
+                      <IoIosCall className="text-lg md:text-xl" />
                     </div>
-                    <div>
-                      <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-0.5">
+                    <div className="text-left">
+                      <p className="text-slate-500 text-[9px] md:text-[10px] font-black uppercase tracking-widest mb-0.5">
                         Call Now
                       </p>
-                      <span className="text-white font-bold tracking-tight text-lg group-hover:text-[#00CCF8] transition-colors">
+                      <span className="text-white font-bold tracking-tight text-base md:text-lg group-hover:text-[#00CCF8] transition-colors">
                         (619) 201-9480
                       </span>
                     </div>
                   </a>
                   <a
                     href="mailto:info@monstersteamer.net"
-                    className="flex items-center gap-4 group"
+                    className="flex items-center justify-center sm:justify-start gap-4 group"
                   >
-                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#00CCF8] group-hover:bg-[#00CCF8] group-hover:text-white border border-white/10 group-hover:border-[#00CCF8] transition-all duration-500">
-                      <IoIosMail className="text-xl" />
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#00CCF8] group-hover:bg-[#00CCF8] group-hover:text-white border border-white/10 group-hover:border-[#00CCF8] transition-all duration-500">
+                      <IoIosMail className="text-lg md:text-xl" />
                     </div>
-                    <div>
-                      <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-0.5">
+                    <div className="text-left">
+                      <p className="text-slate-500 text-[9px] md:text-[10px] font-black uppercase tracking-widest mb-0.5">
                         Email Us
                       </p>
-                      <span className="text-white font-bold tracking-tight group-hover:text-[#00CCF8] transition-colors">
+                      <span className="text-white font-bold tracking-tight group-hover:text-[#00CCF8] transition-colors text-sm md:text-base">
                         info@monstersteamer.net
                       </span>
                     </div>
                   </a>
-                  <div className="flex items-center gap-4 group">
-                    <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#00CCF8] border border-white/10 group-hover:border-[#00CCF8]/50 transition-all duration-500">
-                      <CiLocationOn className="text-xl" />
+                  <div className="flex items-center justify-center sm:justify-start gap-4 group">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-white/5 flex items-center justify-center text-[#00CCF8] border border-white/10 group-hover:border-[#00CCF8]/50 transition-all duration-500">
+                      <CiLocationOn className="text-lg md:text-xl" />
                     </div>
-                    <div>
-                      <p className="text-slate-500 text-[10px] font-black uppercase tracking-widest mb-0.5">
+                    <div className="text-left">
+                      <p className="text-slate-500 text-[9px] md:text-[10px] font-black uppercase tracking-widest mb-0.5">
                         Visit Us
                       </p>
-                      <span className="text-white font-bold tracking-tight">San Diego, CA.</span>
+                      <span className="text-white font-bold tracking-tight text-sm md:text-base">San Diego, CA.</span>
                     </div>
                   </div>
                 </div>
@@ -277,9 +277,9 @@ const Footer = () => {
           </div>
 
           {/* Bottom Bar - Refined Alignment */}
-          <div className="pt-12 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-10">
+          <div className="pt-10 border-t border-white/5 flex flex-col lg:flex-row justify-between items-center gap-10">
             {/* Trust Badges */}
-            <div className="flex flex-wrap justify-center items-center gap-8">
+            <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="flex items-center gap-8">
                 <img
                   className="h-8 md:h-10 brightness-0 invert opacity-40 hover:opacity-100 transition-all duration-500 cursor-pointer"
@@ -317,7 +317,7 @@ const Footer = () => {
               </p>
               <p className="text-slate-500 text-[9px] font-medium uppercase tracking-[0.3em]">
                 Built with Precision by{" "}
-                <span className="text-white/60">Jeremy Ellsworth Designs LLC</span>
+                <span className="text-white/60 text-xs">Jeremy Ellsworth Designs LLC</span>
               </p>
             </div>
           </div>

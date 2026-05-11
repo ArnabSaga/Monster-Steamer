@@ -68,20 +68,20 @@ const Feature = () => {
                         Our Impact
                     </motion.div>
                     
-                    <h2 className="feature-reveal text-6xl md:text-8xl font-black uppercase leading-[0.8] tracking-tighter mb-20">
+                    <h2 className="feature-reveal text-4xl sm:text-6xl md:text-8xl font-black uppercase leading-[0.9] md:leading-[0.8] tracking-tighter mb-12 md:mb-20">
                         Serving the <span className="text-gradient">Community</span> for Over a Decade
                     </h2>
                     
-                    <div ref={statsRef} className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
+                    <div ref={statsRef} className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12 md:gap-y-16">
                         {stats.map((stat, i) => (
                             <div key={i} className="relative group feature-reveal">
                                 <div className={`absolute -left-4 top-0 w-1 h-full bg-gradient-to-b ${stat.color} opacity-30 rounded-full group-hover:scale-y-110 transition-transform`}></div>
-                                <p className="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-3">{stat.label}</p>
-                                <h3 className="text-7xl md:text-8xl font-black text-slate-900 mb-4 tracking-tighter flex items-baseline">
+                                <p className="text-[10px] md:text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-2 md:mb-3">{stat.label}</p>
+                                <h3 className="text-6xl sm:text-7xl md:text-8xl font-black text-slate-900 mb-2 md:mb-4 tracking-tighter flex items-baseline">
                                     <span className="stat-value">{stat.value}</span>
-                                    <span className="text-[#00CCF8] text-5xl ml-1">{stat.suffix}</span>
+                                    <span className="text-[#00CCF8] text-3xl sm:text-4xl md:text-5xl ml-1">{stat.suffix}</span>
                                 </h3>
-                                <p className="text-slate-500 font-medium leading-relaxed max-w-[220px]">{stat.desc}</p>
+                                <p className="text-slate-500 text-sm md:text-base font-medium leading-relaxed max-w-[220px]">{stat.desc}</p>
                             </div>
                         ))}
                     </div>
@@ -90,9 +90,9 @@ const Feature = () => {
                 <motion.div 
                     ref={imageContainerRef}
                     style={{ y: springY, scale, rotateX }}
-                    className="w-full lg:w-1/2 relative perspective-2000"
+                    className="w-full lg:w-1/2 relative mt-12 lg:mt-0 perspective-2000"
                 >
-                    <div className="relative rounded-[4rem] overflow-hidden shadow-[0_60px_120px_rgba(0,0,0,0.15)] aspect-[4/5] border border-slate-100 group">
+                    <div className="relative rounded-[2.5rem] md:rounded-[4rem] overflow-hidden shadow-[0_60px_120px_rgba(0,0,0,0.15)] aspect-[4/5] border border-slate-100 group">
                         <img src={videoBg} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" alt="Carpet Cleaning Video" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                         
@@ -100,18 +100,18 @@ const Feature = () => {
                             initial={{ y: 50, opacity: 0 }}
                             whileInView={{ y: 0, opacity: 1 }}
                             transition={{ delay: 0.5, type: "spring", stiffness: 100 }}
-                            className="absolute bottom-10 left-10 right-10 p-10 glass rounded-[3rem] border border-white/20 shadow-2xl backdrop-blur-3xl"
+                            className="absolute bottom-6 left-6 right-6 md:bottom-10 md:left-10 md:right-10 p-6 md:p-10 glass rounded-[2rem] md:rounded-[3rem] border border-white/20 shadow-2xl backdrop-blur-3xl"
                         >
-                            <div className="flex items-center gap-6">
+                            <div className="flex items-center gap-4 md:gap-6">
                                 <motion.div 
                                     whileHover={{ scale: 1.1, rotate: 90 }}
-                                    className="w-20 h-20 rounded-[2rem] bg-white flex items-center justify-center shadow-xl group cursor-pointer"
+                                    className="w-12 h-12 md:w-20 md:h-20 rounded-xl md:rounded-[2rem] bg-white flex items-center justify-center shadow-xl group cursor-pointer"
                                 >
-                                    <div className="w-6 h-6 bg-[#00CCF8] rounded-sm"></div>
+                                    <div className="w-4 h-4 md:w-6 md:h-6 bg-[#00CCF8] rounded-sm"></div>
                                 </motion.div>
                                 <div>
-                                    <p className="text-white text-3xl font-black tracking-tight">Watch Our Process</p>
-                                    <p className="text-white/70 text-lg font-medium">Professional Equipment in Action</p>
+                                    <p className="text-white text-xl md:text-3xl font-black tracking-tight">Watch Our Process</p>
+                                    <p className="text-white/70 text-sm md:text-lg font-medium">Professional Equipment in Action</p>
                                 </div>
                             </div>
                         </motion.div>
